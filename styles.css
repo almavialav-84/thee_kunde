@@ -1,0 +1,39 @@
+body{
+  font-family: system-ui, Arial, sans-serif;
+  margin: 0;
+  background: #0b0f0d;
+  color: #eef5f0;
+  line-height: 1.5;
+}
+
+.container{
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.header{
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+
+h1{ margin: 0 0 6px; }
+h2{ margin: 28px 0 12px; }
+
+.muted{ color: rgba(238,245,240,.72); }
+.card{
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 16px;
+  padding: 16px;
+  margin: 12px 0;
+}
+
+.footer{
+  padding: 28px 0 40px;
+  border-top: 1px solid rgba(255,255,255,.12);
+  margin-top: 28px;
+}
+article.card img {
+  width: 200px;
+}
