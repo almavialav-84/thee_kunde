@@ -110,6 +110,13 @@ body.home h3 {
   margin: 10px 0;
   font-size: 18px;
 }
+/* Kamille detailpagina */
+.bg-kamille {
+  background-image: url("images/kamille.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
 
 
 
