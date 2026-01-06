@@ -117,6 +117,34 @@ body.home h3 {
   background-position: center;
   min-height: 100vh;
 }
+/* ===== Detailpagina's THEE ===== */
+
+.bg-groene-thee {
+  background:
+    linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.75)),
+    url("images/groene_thee.png");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
+.bg-zwarte-thee {
+  background:
+    linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.75)),
+    url("images/zwarte_thee.png");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
+.bg-oolong-thee {
+  background:
+    linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.75)),
+    url("images/oolong_thee.png");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
 
 
 
