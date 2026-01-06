@@ -14,22 +14,39 @@
     </div>
   </header>
 <main class="container">
-
+<label>Zoek op klacht of moment van de dag:</label>
+<input id="zoek" type="text" placeholder="bijv. avond, stress, energie">
   <section>
     <h2>Thee</h2>
-    <h3><a href="thee/groene-thee.html">Groene thee</a></h3>
-    <h3><a href="thee/oolong-thee.html">Oolong</a></h3>
-    <h3><a href="thee/zwarte-thee.html">Zwarte thee</a></h3>
+<h3 class="item" data-tags="ochtend middag focus energie">
+  <a href="thee/groene-thee.html">Groene thee</a>
+</h3>
+<h3 class="item" data-tags="middag bewust focus">
+  <a href="thee/oolong-thee.html">Oolong</a>
+</h3>
+<h3 class="item" data-tags="ochtend energie">
+  <a href="thee/zwarte-thee.html">Zwarte thee</a>
+</h3>
   </section>
+<section>
+  <h2>Kruiden</h2>
 
-  <section>
-    <h2>Kruiden</h2>
-    <h3><a href="thee/agrimonie.html">Agrimonie</a></h3>
-    <h3><a href="thee/ashwagandha.html">Ashwagandha</a></h3>
-    <h3><a href="thee/kamille.html">Kamille</a></h3>
-    <h3><a href="thee/pepermunt.html">Pepermunt</a></h3>
-  </section>
+  <h3 class="item" data-tags="medicinaal lever spijsvertering opwekkend">
+    <a href="thee/agrimonie.html">Agrimonie</a>
+  </h3>
 
+  <h3 class="item" data-tags="avond rust slaap ontspanning stress">
+    <a href="thee/ashwagandha.html">Ashwagandha</a>
+  </h3>
+
+  <h3 class="item" data-tags="avond ontspanning rust slaap cafeinevrij">
+    <a href="thee/kamille.html">Kamille</a>
+  </h3>
+
+  <h3 class="item" data-tags="spijsvertering maag fris cafeinevrij">
+    <a href="thee/pepermunt.html">Pepermunt</a>
+  </h3>
+</section>
   <section>
     <h2>Specerijen</h2>
     <p class="muted">Binnenkort toegevoegd</p>
@@ -37,7 +54,9 @@
 
   <section>
     <h2>Wortel</h2>
-    <h3><a href="thee/gember.html">Gember</a></h3>
+    <div class="item" data-tags="wortel ochtend middag spijsvertering verwarmend misselijkheid cafeinevrij">
+  <h3><a href="thee/gember.html">Gember</a></h3>
+</div>
   </section>
 
   <section>
@@ -45,5 +64,23 @@
     <p class="muted">Binnenkort toegevoegd</p>
   </section>
 </main>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const input = document.getElementById("zoek");
+    const items = document.querySelectorAll(".item");
+
+    input.addEventListener("input", () => {
+      const q = input.value.toLowerCase().trim();
+
+      items.forEach(item => {
+        const tekst = item.innerText.toLowerCase();
+        const tags = (item.dataset.tags || "").toLowerCase();
+        const match = tekst.includes(q) || tags.includes(q);
+
+        item.style.display = match ? "" : "none";
+      });
+    });
+  });
+</script>
 </body>
 </html>
