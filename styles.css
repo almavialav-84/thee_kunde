@@ -99,6 +99,10 @@ body.home section{
   padding: 18px 0;
   border-bottom: 1px solid rgba(0,0,0,.08);
 }
+/* Homepage items iets meer ruimte */
+body.home .item {
+  margin: 10px 0;
+}
 body.home section:last-child{ border-bottom: none; }
 
 body.home h3{
