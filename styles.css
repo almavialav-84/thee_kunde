@@ -28,6 +28,13 @@ h2{ margin: 28px 0 12px; }
   opacity: .75;
 }
 
+.sub-info{
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: #333;
+  opacity: .9;
+}
+
 /* Link styling */
 a{
   color: #5a2a82;
@@ -43,6 +50,20 @@ a:hover{ opacity: .85; }
   border-radius: 16px;
   padding: 16px;
   margin: 12px 0;
+}
+/* tags / zoekwoorden */
+.tags{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 10px;
+}
+
+.tags span{
+  font-size: 0.9rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.05);
 }
 
 .footer{
@@ -209,4 +230,47 @@ body[class^="bg-"] main.container{
   margin-top: 40px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
+/* zoethout – één grote volledige plant */
+.bg-zoethout{
+  background:
+    linear-gradient(to right,
+      rgba(255,255,255,.92) 0%,
+      rgba(255,255,255,.80) 55%,
+      rgba(255,255,255,.50) 100%
+    ),
+    url("images/zoethout.png");
+  background-repeat: no-repeat;
+  background-size: auto 95vh;
+  background-position: right 0px center;
+  min-height: 100vh;
+}
+.bg-zoethout .card{
+  background: rgba(255,255,255,.55);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(0,0,0,.04);
+}
+
+/* kaneel – één grote volledige plant */
+.bg-kaneel{
+  background:
+    linear-gradient(
+      to right,
+      rgba(255,255,255,.90) 0%,
+      rgba(255,255,255,.75) 55%,
+      rgba(255,255,255,.55) 100%
+    ),
+    url("images/kaneel.png");
+  background-repeat: no-repeat;
+  background-size: auto 95vh;
+  background-position: right center;
+  min-height: 100vh;
+}
+
+/* kaart blendt met afbeelding */
+.bg-kaneel .card{
+  background: rgba(255,255,255,.40);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(0,0,0,.04);
+}
+
 
