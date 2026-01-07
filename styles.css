@@ -272,5 +272,39 @@ body[class^="bg-"] main.container{
   backdrop-filter: blur(14px);
   border: 1px solid rgba(0,0,0,.04);
 }
+/* ==========================
+   MOBIEL (telefoon/tablet)
+   ========================== */
+@media (max-width: 768px){
+
+  /* Algemeen: wat meer ruimte */
+  .container{
+    padding: 0 14px;
+  }
+
+  .header{
+    padding: 20px 0;
+  }
+
+  /* Kaart: minder breed, mooi onder elkaar */
+  .card{
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  /* Achtergrond-afbeelding: altijd in beeld op mobiel */
+  .bg-kaneel,
+  .bg-zoethout{
+    background-position: center bottom;
+    background-size: contain;
+  }
+
+  /* Kaart blendt maar blijft leesbaar */
+  .bg-kaneel .card,
+  .bg-zoethout .card{
+    background: rgba(255,255,255,.60);
+    backdrop-filter: blur(12px);
+  }
+}
 
 
