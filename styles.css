@@ -114,197 +114,54 @@ body.home .card{
   margin: 0 0 12px;
 }
 
-
 /* =========================
    DETAILPAGINA'S MET FOTO
    (body class="bg-...")
+   1 stijl zoals PEPERMUNT (PC + mobiel gelijk)
 ========================= */
 
-/* Algemene “leesbare laag” op alle detailpagina's */
+/* 1) Algemene achtergrond-instellingen voor ALLE bg- pagina’s */
+body[class^="bg-"]{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;    /* vult het scherm */
+  min-height: 100vh;
+}
+
+/* 2) Het “pepermunt-blok” met tekst (1 vaste layout) */
 body[class^="bg-"] main.container{
-  background: rgba(255,255,255,.78);
-  border-radius: 16px;
-  padding: 20px;
-  margin-top: 20px;
-  border: 1px solid rgba(0,0,0,.06);
-}
-
-/* Kamille */
-.bg-kamille{
-  background:
-    linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.75)),
-    url("images/kamille_thee.jpg");
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-}
-
-/* Groene thee */
-.bg-groene-thee{
-  background:
-    linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.75)),
-    url("images/groene_thee.png");
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-}
-
-/* Zwarte thee */
-.bg-zwarte-thee{
-  background:
-    linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.75)),
-    url("images/zwarte_thee.png");
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-}
-
-/* Oolong */
-.bg-oolong-thee{
-  background:
-    linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.75)),
-    url("images/groene_thee.png");
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-}
-
-/* ashwagandha */
-.bg-ashwagandha{
-  background:
-    linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.75)),
-    url("images/ashwagandha.png");
-  background-size: contain;
-  background-position: center;
-  min-height: 100vh;
-}
-
-/* Agrimonie – achtergrondafbeelding */
-.bg-agrimonie {
-  background-image: url("images/Agrimonie.png");
-  background-size: auto 85vh;      /* hele plant zichtbaar */
-  background-repeat: no-repeat;
-  background-position: right center;
-  min-height: 100vh;
-}
-
-/* Leesbaar tekstblok op plant-achtergrond */
-.bg-agrimonie main.container {
-  background: rgba(255, 255, 255, 0.88);
   max-width: 720px;
-  padding: 32px;
+  margin: 40px auto 60px;
+  padding: clamp(18px, 4vw, 32px);   /* werkt vanzelf op mobiel */
+  background: rgba(255,255,255,0.78); /* lager = transparanter */
+  border: 1px solid rgba(0,0,0,0.06);
   border-radius: 20px;
-  margin-top: 40px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
-/* gember – één grote volledige plant */
-.bg-gember{
-  background:
-    linear-gradient(
-      rgba(255,255,255,.88),
-      rgba(255,255,255,.88)
-    ),
-    url("images/gember.png");
-  background-repeat: no-repeat;
-  background-size: cover;   /* hele plant zichtbaar */
-  background-position: right center;
-  min-height: 100vh;
+/* 3) Jij gebruikt <article class="card"> binnen main.container.
+   Om te voorkomen dat je 2 witte vlakken krijgt:
+   maak .card transparant op detailpagina’s */
+body[class^="bg-"] .card{
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
 }
 
-/* Pepermunt – achtergrondafbeelding */
-.bg-pepermunt {
-  background-image: url("images/pepermunt.png");
-  background-size: cover;   /* hele plant zichtbaar */
-  background-repeat: no-repeat;
-  background-position: right center;
-  min-height: 100vh;
-}
+/* =========================
+   PER PAGINA: alleen de afbeelding
+   (zelfde layout, andere background-image)
+========================= */
 
-/* Leesbaar tekstblok op pepermunt-achtergrond */
-.bg-pepermunt main.container {
-  background: rgba(255, 255, 255, 0.88);
-  max-width: 720px;
-  padding: 32px;
-  border-radius: 20px;
-  margin-top: 40px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-}
-/* zoethout – één grote volledige plant */
-.bg-zoethout{
-  background:
-    linear-gradient(to right,
-      rgba(255,255,255,.92) 0%,
-      rgba(255,255,255,.80) 55%,
-      rgba(255,255,255,.50) 100%
-    ),
-    url("images/zoethout.png");
-  background-repeat: no-repeat;
-  background-size: auto 95vh;
-  background-position: right 0px center;
-  min-height: 100vh;
-}
-.bg-zoethout .card{
-  background: rgba(255,255,255,.55);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(0,0,0,.04);
-}
-
-/* kaneel – één grote volledige plant */
-.bg-kaneel{
-  background:
-    linear-gradient(
-      to right,
-      rgba(255,255,255,.90) 0%,
-      rgba(255,255,255,.75) 55%,
-      rgba(255,255,255,.55) 100%
-    ),
-    url("images/kaneel.png");
-  background-repeat: no-repeat;
-  background-size: auto 95vh;
-  background-position: right center;
-  min-height: 100vh;
-}
-
-/* kaart blendt met afbeelding */
-.bg-kaneel .card{
-  background: rgba(255,255,255,.40);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(0,0,0,.04);
-}
-/* ==========================
-   MOBIEL (telefoon/tablet)
-   ========================== */
-@media (max-width: 768px){
-
-  /* Algemeen: wat meer ruimte */
-  .container{
-    padding: 0 14px;
-  }
-
-  .header{
-    padding: 20px 0;
-  }
-
-  /* Kaart: minder breed, mooi onder elkaar */
-  .card{
-    padding: 14px;
-    border-radius: 16px;
-  }
-
-  /* Achtergrond-afbeelding: altijd in beeld op mobiel */
-  .bg-kaneel,
-  .bg-zoethout{
-    background-position: center bottom;
-    background-size: contain;
-  }
-
-  /* Kaart blendt maar blijft leesbaar */
-  .bg-kaneel .card,
-  .bg-zoethout .card{
-    background: rgba(255,255,255,.60);
-    backdrop-filter: blur(12px);
-  }
-}
-
-
+.bg-kamille{      background-image: url("images/kamille_thee.jpg"); }
+.bg-groene-thee{  background-image: url("images/groene_thee.png"); }
+.bg-zwarte-thee{  background-image: url("images/zwarte_thee.png"); }
+.bg-oolong-thee{  background-image: url("images/groene_thee.png"); } /* of jouw juiste bestand */
+.bg-ashwagandha{  background-image: url("images/ashwagandha.png"); }
+.bg-agrimonie{    background-image: url("images/Agrimonie.png"); }  /* let op hoofdletter A */
+.bg-gember{       background-image: url("images/gember.png"); }
+.bg-pepermunt{    background-image: url("images/pepermunt.png"); }
+.bg-zoethout{     background-image: url("images/zoethout.png"); }
+.bg-kaneel{       background-image: url("images/kaneel.png"); }
