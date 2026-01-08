@@ -197,6 +197,17 @@ body[class^="bg-"] .card{
 .bg-passiebloem{ background-image: url("images/passiebloem.png"); }
 .bg-rozemarijn{ background-image: url("images/rozemarijn.png"); }
 .bg-salie{ background-image: url("images/salie.png"); }
+.bg-tulsi{ background-image: url("images/tulsi.png"); }
+.bg-tijm{ background-image: url("images/tijm.png"); }
+.bg-valeriaan-wortel{ background-image: url("images/valeriaan-wortel.png"); }
+.bg-vlierbloesem{ background-image: url("images/vlierbloesem.png"); }
+.bg-wilgenbast{ background-image: url("images/wilgenbast.png"); }
+.bg-wilgenroosje{ background-image: url("images/wilgenroosje.png"); }
+.bg-wilde-marjolein{ background-image: url("images/wilde-marjolein.png"); }
+.bg-witte-dovenetel{ background-image: url("images/witte-dovenetel.png"); }
+.bg-zwarte-bessen-blad{ background-image: url("images/zwarte-bessen-blad.png"); }
+.bg-rode-peper{ background-image: url("images/rode-peper.png"); }
+.bg-kardemom{ background-image: url("images/kardemom.png"); }
 
 
 /* Zwarte thee: achtergrond iets anders uitlijnen (afbeelding heeft veel wit/andere crop) */
