@@ -171,6 +171,21 @@ body[class^="bg-"] .card{
 .bg-kaneel{       background-image: url("images/kaneel.png"); }
 .bg-rozenblaadjes{ background-image: url("images/rozenblaadjes.png") ;}
 .bg-paardenbloem{ background-image: url("images/paardenbloem.png"); }
+/* Nieuwe kruiden voorraad */
+.bg-bijvoet{ background-image: url("images/bijvoet.png"); }
+.bg-braamblad{ background-image: url("images/braamblad.png"); }
+.bg-brandnetel{ background-image: url("images/brandnetel.png"); }
+.bg-calendula{ background-image: url("images/calendula.png"); }
+.bg-cichorei{ background-image: url("images/cichorei.png"); }
+.bg-citroenmelisse{ background-image: url("images/citroenmelisse.png"); }
+.bg-echinacea-wortel{ background-image: url("images/echinacea-wortel.png"); }
+.bg-ginko-biloba{ background-image: url("images/ginko-biloba.png"); }
+.bg-glidkruid{ background-image: url("images/gildkruid.png"); }
+.bg-gulden-roede{ background-image: url("images/gulden-roede.png"); }
+.bg-heermoes{ background-image: url("images/heermoes.png"); }
+.bg-hibiscus{ background-image: url("images/hibiscus.png"); }
+.bg-honey-bush{ background-image: url("images/honey-bush.png"); }
+
 
 /* Zwarte thee: achtergrond iets anders uitlijnen (afbeelding heeft veel wit/andere crop) */
 .bg-zwarte-thee{
