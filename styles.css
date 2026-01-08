@@ -170,6 +170,11 @@ body[class^="bg-"] .card{
 .bg-zoethout{     background-image: url("images/zoethout.png"); }
 .bg-kaneel{       background-image: url("images/kaneel.png"); }
 
+/* Zwarte thee: achtergrond iets anders uitlijnen (afbeelding heeft veel wit/andere crop) */
+.bg-zwarte-thee{
+  background-position: center top;   /* of: center 20% */
+}
+
 /* =========================
    NAVIGATIEKNOPPEN DETAILPAGINA
    ========================= */
