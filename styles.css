@@ -169,3 +169,85 @@ body[class^="bg-"] .card{
 .bg-pepermunt{    background-image: url("images/pepermunt.png"); }
 .bg-zoethout{     background-image: url("images/zoethout.png"); }
 .bg-kaneel{       background-image: url("images/kaneel.png"); }
+
+/* =========================
+   NAVIGATIEKNOPPEN DETAILPAGINA
+   ========================= */
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-nav {
+  text-decoration: none;
+  font-weight: 500;
+  color: #6b2fa3;
+}
+/* =========================
+   DETAILPAGINA'S (alle body class="bg-...")
+   1 vaste layout (pc + mobiel gelijk)
+========================= */
+
+/* 1) Achtergrond voor alle detailpagina's */
+body[class^="bg-"]{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+/* 2) Container/kaart voor detailpagina's */
+body[class^="bg-"] main.container{
+  max-width: 720px;
+  margin: 40px auto 60px;
+  padding: clamp(18px, 4vw, 32px);
+  background: rgba(255,255,255,.78);
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.08);
+}
+
+/* 3) Als je <article class="card"> gebruikt binnen main.container:
+      voorkom dubbele "kaart" styling */
+body[class^="bg-"] .card{
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+/* 4) Info-lijst (Moment/Werking/Cafeïne/Zet-tip) */
+.info-list{
+  margin: 14px 0 0;
+  padding-left: 20px; /* bullets netjes */
+}
+
+.info-list li{
+  margin: 6px 0;
+}
+
+/* 5) Navigatie knoppen (2 aparte links) */
+.nav-buttons{
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-nav{
+  text-decoration: none;
+  font-weight: 600;
+  color: #5a2a82; /* match jouw linkkleur */
+}
+
+/* Optioneel: op heel smal scherm onder elkaar */
+@media (max-width: 420px){
+  .nav-buttons{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
