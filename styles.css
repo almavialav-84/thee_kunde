@@ -258,3 +258,101 @@ body[class^="bg-"] .card{
     align-items: flex-start;
   }
 }
+/* ==========================
+   HOMEPAGE: zoeken + chips
+   ========================== */
+
+.search-panel{
+  margin: 14px 0 22px;
+}
+
+.search-row{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.search-input{
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,.12);
+  background: rgba(255,255,255,.85);
+  font-size: 16px;
+  outline: none;
+}
+
+.search-input:focus{
+  border-color: rgba(90,42,130,.35);
+  box-shadow: 0 0 0 4px rgba(90,42,130,.10);
+}
+
+.search-btn{
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,.12);
+  background: rgba(255,255,255,.85);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.search-btn:hover{ opacity: .9; }
+
+.chip-row{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.chip{
+  border: 1px solid rgba(90,42,130,.18);
+  background: rgba(90,42,130,.08);
+  color: #5a2a82; /* match je linkkleur */
+  padding: 10px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.chip:hover{ background: rgba(90,42,130,.12); }
+
+.chip.is-active{
+  background: rgba(90,42,130,.18);
+  border-color: rgba(90,42,130,.28);
+}
+
+.search-count{
+  margin-top: 10px;
+}
+
+/* Alfabet – cursieve, elegante stijl */
+.alphabet {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0 10px;
+}
+
+.az-btn {
+  font-family: "Playfair Display", "Georgia", "Times New Roman", cursive;
+  font-style: italic;
+  font-size: 18px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,.15);
+  background: rgba(255,255,255,.7);
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.az-btn:hover {
+  background: rgba(255,255,255,.9);
+  transform: translateY(-1px);
+}
+
+.az-btn.is-active {
+  background: #6b2fa3;
+  color: #fff;
+  border-color: #6b2fa3;
+}
