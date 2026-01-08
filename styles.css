@@ -169,6 +169,8 @@ body[class^="bg-"] .card{
 .bg-pepermunt{    background-image: url("images/pepermunt.png"); }
 .bg-zoethout{     background-image: url("images/zoethout.png"); }
 .bg-kaneel{       background-image: url("images/kaneel.png"); }
+.bg-rozenblaadjes{ background-image: url("images/rozenblaadjes.png") ;}
+.bg-paardenbloem{ background-image: url("images/paardenbloem.png"); }
 
 /* Zwarte thee: achtergrond iets anders uitlijnen (afbeelding heeft veel wit/andere crop) */
 .bg-zwarte-thee{
