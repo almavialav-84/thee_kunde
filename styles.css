@@ -204,10 +204,12 @@ body[class^="bg-"] .card{
 .bg-wilgenbast{ background-image: url("images/wilgenbast.png"); }
 .bg-wilgenroosje{ background-image: url("images/wilgenroosje.png"); }
 .bg-wilde-marjolein{ background-image: url("images/wilde-marjolein.png"); }
-.bg-witte-dovenetel{ background-image: url("images/witte-dovenetel.png"); }
+.bg-dovenetel{ background-image: url("images/dovenetel.png"); }
 .bg-zwarte-bessen-blad{ background-image: url("images/zwarte-bessen-blad.png"); }
 .bg-rode-peper{ background-image: url("images/rode-peper.png"); }
 .bg-kardemom{ background-image: url("images/kardemom.png"); }
+.bg-bergthee{ background-image: url("images/bergthee.png");}
+.bg-ijzerkruid{ background-image: url("images/ijzerkruid.png");}
 
 
 /* Zwarte thee: achtergrond iets anders uitlijnen (afbeelding heeft veel wit/andere crop) */
