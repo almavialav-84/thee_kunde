@@ -199,7 +199,7 @@ body[class^="bg-"] .card{
 .bg-salie{ background-image: url("images/salie.png"); }
 .bg-tulsi{ background-image: url("images/tulsi.png"); }
 .bg-tijm{ background-image: url("images/tijm.png"); }
-.bg-valeriaan-wortel{ background-image: url("images/valeriaan-wortel.png"); }
+.bg-valeriaanwortel{ background-image: url("images/valeriaanwortel.png"); }
 .bg-vlierbloesem{ background-image: url("images/vlierbloesem.png"); }
 .bg-wilgenbast{ background-image: url("images/wilgenbast.png"); }
 .bg-wilgenroosje{ background-image: url("images/wilgenroosje.png"); }
@@ -210,12 +210,15 @@ body[class^="bg-"] .card{
 .bg-kardemom{ background-image: url("images/kardemom.png"); }
 .bg-bergthee{ background-image: url("images/bergthee.png");}
 .bg-ijzerkruid{ background-image: url("images/ijzerkruid.png");}
-
-
+/* ===== Struiken ===== */
+/* Braam (gebruik braamblad als achtergrond) */
+.bg-braam{background-image: url("images/braamblad.png");}
+/* Zwarte bessen (blad als achtergrond) */
+.bg-zwarte-bes{background-image: url("images/zwarte-bes.png");}
+/* Framboos */
+.bg-framboos{background-image: url("images/framboos.png");}
 /* Zwarte thee: achtergrond iets anders uitlijnen (afbeelding heeft veel wit/andere crop) */
-.bg-zwarte-thee{
-  background-position: center top;   /* of: center 20% */
-}
+.bg-zwarte-thee{background-position: center top;   /* of: center 20% */}
 
 /* =========================
    NAVIGATIEKNOPPEN DETAILPAGINA
@@ -395,4 +398,55 @@ body[class^="bg-"] .card{
   background: #6b2fa3;
   color: #fff;
   border-color: #6b2fa3;
+}
+
+/* ===============================
+   Zij-navigatie (vorige / volgende)
+   =============================== */
+
+.nav-sides {
+  position: fixed;
+  bottom: 120px;   /* ⬅️ hoogte vanaf onderkant */
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.nav-side {
+  pointer-events: auto;
+  position: absolute;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: #5a4a3f;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+}
+
+.nav-side:hover {
+  background: #ffffff;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.nav-side.left {
+  left: 12px;
+  transform: translateY(-50%);
+}
+
+.nav-side.right {
+  right: 12px;
+  transform: translateY(-50%);
+}
+
+/* ===============================
+   Middenknop (terug naar overzicht)
+   =============================== */
+
+.nav-center {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
 }
