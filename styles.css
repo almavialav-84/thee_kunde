@@ -1,117 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap");
+
+/* =========================
+   VARIABLES
+========================= */
+:root {
+  --bg: #f6f6f4;
+  --text: #111;
+  --muted: #333;
+
+  --link: #5a2a82;
+  --link-alt: #6b2fa3;
+
+  --card: rgba(255, 255, 255, 0.72);
+  --card-strong: rgba(255, 255, 255, 0.78);
+  --card-cat: rgba(255, 255, 255, 0.85);
+
+  --border: 1px solid rgba(0, 0, 0, 0.06);
+  --rule: 1px solid rgba(0, 0, 0, 0.08);
+
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
+
+  --radius: 16px;
+  --radius-lg: 20px;
+}
+
 /* =========================
    BASIS (alle pagina's)
 ========================= */
-body{
+body {
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
   margin: 0;
-  background: #f6f6f4;
+  background: var(--bg);
   color: #000;
   line-height: 1.5;
 }
 
-.container{
+.container {
   max-width: 900px;
   margin: 0 auto;
   padding: 0 16px;
 }
 
-.header{
+.header {
   padding: 32px 0;
-  border-bottom: 1px solid rgba(0,0,0,.08);
+  border-bottom: var(--rule);
 }
 
-h1{ margin: 0 0 6px; }
-h2{ margin: 28px 0 12px; }
+h1 { margin: 0 0 6px; }
+h2 { margin: 28px 0 12px; }
 
-.muted{
+.muted {
   color: #000;
-  opacity: .75;
+  opacity: 0.75;
 }
 
-.sub-info{
+.sub-info {
   margin-top: 8px;
   font-size: 0.95rem;
-  color: #333;
-  opacity: .9;
+  color: var(--muted);
+  opacity: 0.9;
 }
 
 /* Link styling */
-a{
-  color: #5a2a82;
+a {
+  color: var(--link);
   text-decoration: underline;
   font-weight: 600;
 }
-a:hover{ opacity: .85; }
+a:hover { opacity: 0.85; }
 
-/* (Optioneel) Kaartjes - als je ze ergens nog gebruikt */
-.card{
-  background: rgba(255,255,255,.72);
-  border: 1px solid rgba(0,0,0,.06);
-  border-radius: 16px;
+/* (Optioneel) Kaartjes */
+.card {
+  background: var(--card);
+  border: var(--border);
+  border-radius: var(--radius);
   padding: 16px;
   margin: 12px 0;
 }
+
 /* tags / zoekwoorden */
-.tags{
+.tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin: 14px 0 10px;
 }
-
-.tags span{
+.tags span {
   font-size: 0.9rem;
   padding: 6px 10px;
   border-radius: 999px;
-  background: rgba(0,0,0,.05);
+  background: rgba(0, 0, 0, 0.05);
 }
 
-.footer{
+.footer {
   padding: 28px 0 40px;
-  border-top: 1px solid rgba(0,0,0,.08);
+  border-top: var(--rule);
   margin-top: 28px;
 }
 
-
 /* =========================
-   HOMEPAGE
-   (body class="home")
+   HOMEPAGE (body class="home")
 ========================= */
-body.home{
+body.home {
   background-image: url("images/achtergrond_thee_kunde.jpg");
   background-repeat: repeat;
   background-size: auto;
-  color: #111;
+  color: var(--text);
 }
 
-/* Witte, leesbare “plaat” op homepage */
-body.home main.container{
-  background: rgba(255,255,255,.72);
-  border: 1px solid rgba(0,0,0,.06);
-  border-radius: 16px;
+/* Witte, leesbare "plaat" op homepage */
+body.home main.container {
+  background: var(--card);
+  border: var(--border);
+  border-radius: var(--radius);
   padding: 28px;
   margin-top: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+  box-shadow: var(--shadow);
 }
 
 /* Secties op homepage netjes */
-body.home section{
+body.home section {
   padding: 18px 0;
-  border-bottom: 1px solid rgba(0,0,0,.08);
+  border-bottom: var(--rule);
 }
-/* Homepage items iets meer ruimte */
-body.home .item {
-  margin: 10px 0;
-}
-body.home section:last-child{ border-bottom: none; }
+body.home section:last-child { border-bottom: none; }
 
-body.home h3{
+body.home .item { margin: 10px 0; }
+
+body.home h3 {
   margin: 10px 0;
   font-size: 18px;
 }
 
 /* Belangrijk: homepage GEEN kaartjes */
-body.home .card{
+body.home .card {
   background: none;
   border: none;
   padding: 0;
@@ -121,128 +144,10 @@ body.home .card{
 /* =========================
    DETAILPAGINA'S MET FOTO
    (body class="bg-...")
-   1 stijl zoals PEPERMUNT (PC + mobiel gelijk)
-========================= */
-
-/* 1) Algemene achtergrond-instellingen voor ALLE bg- pagina’s */
-body[class^="bg-"]{
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;    /* vult het scherm */
-  min-height: 100vh;
-}
-
-/* 2) Het “pepermunt-blok” met tekst (1 vaste layout) */
-body[class^="bg-"] main.container{
-  max-width: 720px;
-  margin: 40px auto 60px;
-  padding: clamp(18px, 4vw, 32px);   /* werkt vanzelf op mobiel */
-  background: rgba(255,255,255,0.78); /* lager = transparanter */
-  border: 1px solid rgba(0,0,0,0.06);
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-}
-
-/* 3) Jij gebruikt <article class="card"> binnen main.container.
-   Om te voorkomen dat je 2 witte vlakken krijgt:
-   maak .card transparant op detailpagina’s */
-body[class^="bg-"] .card{
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
-  box-shadow: none;
-}
-
-/* =========================
-   PER PAGINA: alleen de afbeelding
-   (zelfde layout, andere background-image)
-========================= */
-
-.bg-kamille{      background-image: url("images/kamille_thee.jpg"); }
-.bg-groene-thee{  background-image: url("images/groene_thee.png"); }
-.bg-zwarte-thee{  background-image: url("images/zwarte_thee.png"); }
-.bg-oolong-thee{  background-image: url("images/groene_thee.png"); } /* of jouw juiste bestand */
-.bg-ashwagandha{  background-image: url("images/ashwagandha.png"); }
-.bg-agrimonie{    background-image: url("images/Agrimonie.png"); }  /* let op hoofdletter A */
-.bg-gember{       background-image: url("images/gember.png"); }
-.bg-pepermunt{    background-image: url("images/pepermunt.png"); }
-.bg-zoethout{     background-image: url("images/zoethout.png"); }
-.bg-kaneel{       background-image: url("images/kaneel.png"); }
-.bg-rozenblaadjes{ background-image: url("images/rozenblaadjes.png") ;}
-.bg-paardenbloem{ background-image: url("images/paardenbloem.png"); }
-/* Nieuwe kruiden voorraad */
-.bg-bijvoet{ background-image: url("images/bijvoet.png"); }
-.bg-braamblad{ background-image: url("images/braamblad.png"); }
-.bg-brandnetel{ background-image: url("images/brandnetel.png"); }
-.bg-calendula{ background-image: url("images/calendula.png"); }
-.bg-cichorei{background-image: url("images/cichorei.png");}
-.bg-citroenmelisse{background-image: url("images/citroenmelisse.png");}
-.bg-echinacea-wortel{ background-image: url("images/echinacea-wortel.png"); }
-.bg-ginkgo-biloba{background-image: url("images/ginkgo-biloba.png");}
-.bg-gildkruid{ background-image: url("images/gildkruid.png");}
-.bg-gulden-roede{ background-image: url("images/gulden-roede.png"); }
-.bg-heermoes{ background-image: url("images/heermoes.png"); }
-.bg-hibiscus{ background-image: url("images/hibiscus.png"); }
-.bg-honey-bush{ background-image: url("images/honey-bush.png"); }
-.bg-jeneverbes{ background-image: url("images/jeneverbes.png"); }
-.bg-kaneelstokjes-8-cm{ background-image: url("images/kaneelstokjes-8-cm.png"); }
-.bg-kleefkruid{ background-image: url("images/kleefkruid.png"); }
-.bg-korenbloem{ background-image: url("images/korenbloem.png"); }
-.bg-lavendel{ background-image: url("images/lavendel.png"); }
-.bg-meidoorn{ background-image: url("images/meidoorn.png"); }
-.bg-moringa-blad{ background-image: url("images/moringa-blad.png"); }
-.bg-moerasspirea-bloesem{ background-image: url("images/moerasspirea-bloesem.png"); }
-.bg-oranjebloesem{ background-image: url("images/oranjebloesem.png"); }
-.bg-passiebloem{ background-image: url("images/passiebloem.png"); }
-.bg-rozemarijn{ background-image: url("images/rozemarijn.png"); }
-.bg-salie{ background-image: url("images/salie.png"); }
-.bg-tulsi{ background-image: url("images/tulsi.png"); }
-.bg-tijm{ background-image: url("images/tijm.png"); }
-.bg-valeriaanwortel{ background-image: url("images/valeriaanwortel.png"); }
-.bg-vlierbloesem{ background-image: url("images/vlierbloesem.png"); }
-.bg-wilgenbast{ background-image: url("images/wilgenbast.png"); }
-.bg-wilgenroosje{ background-image: url("images/wilgenroosje.png"); }
-.bg-wilde-marjolein{ background-image: url("images/wilde-marjolein.png"); }
-.bg-dovenetel{ background-image: url("images/dovenetel.png"); }
-.bg-zwarte-bessen-blad{ background-image: url("images/zwarte-bessen-blad.png"); }
-.bg-rode-peper{ background-image: url("images/rode-peper.png"); }
-.bg-kardemom{ background-image: url("images/kardemom.png"); }
-.bg-bergthee{ background-image: url("images/bergthee.png");}
-.bg-ijzerkruid{ background-image: url("images/ijzerkruid.png");}
-/* ===== Struiken ===== */
-/* Braam (gebruik braamblad als achtergrond) */
-.bg-braam{background-image: url("images/braamblad.png");}
-/* Zwarte bessen (blad als achtergrond) */
-.bg-zwarte-bes{background-image: url("images/zwarte-bes.png");}
-/* Framboos */
-.bg-framboos{background-image: url("images/framboos.png");}
-/* Zwarte thee: achtergrond iets anders uitlijnen (afbeelding heeft veel wit/andere crop) */
-.bg-zwarte-thee{background-position: center top;   /* of: center 20% */}
-
-/* =========================
-   NAVIGATIEKNOPPEN DETAILPAGINA
-   ========================= */
-
-.nav-buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.btn-nav {
-  text-decoration: none;
-  font-weight: 500;
-  color: #6b2fa3;
-}
-/* =========================
-   DETAILPAGINA'S (alle body class="bg-...")
-   1 vaste layout (pc + mobiel gelijk)
 ========================= */
 
 /* 1) Achtergrond voor alle detailpagina's */
-body[class^="bg-"]{
+body[class^="bg-"] {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -250,19 +155,18 @@ body[class^="bg-"]{
 }
 
 /* 2) Container/kaart voor detailpagina's */
-body[class^="bg-"] main.container{
+body[class^="bg-"] main.container {
   max-width: 720px;
   margin: 40px auto 60px;
   padding: clamp(18px, 4vw, 32px);
-  background: rgba(255,255,255,.78);
-  border: 1px solid rgba(0,0,0,.06);
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,.08);
+  background: var(--card-strong);
+  border: var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
 }
 
-/* 3) Als je <article class="card"> gebruikt binnen main.container:
-      voorkom dubbele "kaart" styling */
-body[class^="bg-"] .card{
+/* 3) Voorkom dubbele "kaart" styling binnen main.container */
+body[class^="bg-"] .card {
   background: transparent;
   border: none;
   padding: 0;
@@ -271,55 +175,404 @@ body[class^="bg-"] .card{
 }
 
 /* 4) Info-lijst (Moment/Werking/Cafeïne/Zet-tip) */
-.info-list{
-  margin: 14px 0 0;
-  padding-left: 20px; /* bullets netjes */
+.info-list {
+  margin: 14px 0;
+  padding-left: 20px;
 }
-
-.info-list li{
-  margin: 6px 0;
-}
+.info-list li { margin: 6px 0; }
 
 /* 5) Navigatie knoppen (2 aparte links) */
-.nav-buttons{
+.nav-buttons {
   display: flex;
   justify-content: space-between;
   gap: 12px;
   margin-top: 20px;
 }
+.btn-nav {
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--link-alt);
+}
 
+/* =========================
+   PER PAGINA: achtergrond-afbeelding
+========================= */
+.bg-kamille { background-image: url("images/kamille_thee.jpg"); }
+.bg-groene-thee { background-image: url("images/groene_thee.png"); }
+.bg-zwarte-thee { background-image: url("images/zwarte_thee.png"); }
+.bg-oolong-thee { background-image: url("images/groene_thee.png"); } /* of jouw juiste bestand */
+.bg-ashwagandha { background-image: url("images/ashwagandha.png"); }
+.bg-agrimonie { background-image: url("images/agrimonie.png"); } /* let op hoofdletter A */
+.bg-gember { background-image: url("images/gember.png"); }
+.bg-pepermunt { background-image: url("images/pepermunt.png"); }
+.bg-zoethout { background-image: url("images/zoethout.png"); }
+.bg-kaneel { background-image: url("images/kaneel.png"); }
+.bg-rozenblaadjes { background-image: url("images/rozenblaadjes.png"); }
+.bg-paardebloem { background-image: url("images/paardebloem.png"); }
+
+/* Nieuwe kruiden voorraad */
+.bg-bijvoet { background-image: url("images/bijvoet.png"); }
+.bg-braamblad { background-image: url("images/braamblad.png"); }
+.bg-brandnetel { background-image: url("images/brandnetel.png"); }
+.bg-calendula { background-image: url("images/calendula.png"); }
+.bg-cichorei { background-image: url("images/cichorei.png"); }
+.bg-citroenmelisse { background-image: url("images/citroenmelisse.png"); }
+.bg-echinacea-wortel { background-image: url("images/echinacea-wortel.png"); }
+.bg-ginkgo-biloba { background-image: url("images/ginkgo-biloba.png"); }
+.bg-gildkruid { background-image: url("images/gildkruid.png"); }
+.bg-gulden-roede { background-image: url("images/gulden-roede.png"); }
+.bg-heermoest { background-image: url("images/heermoes.png"); }
+.bg-hibiscus { background-image: url("images/hibiscus.png"); }
+.bg-honey-bush { background-image: url("images/honey-bush.png"); }
+.bg-jeneverb es { background-image: url("images/jeneverbes.png"); } /* check: classnaam met spatie is fout; zie opmerking hieronder */
+.bg-kaneelstokjes-8-cm { background-image: url("images/kaneelstokjes-8-cm.png"); }
+.bg-kleefkruid { background-image: url("images/kleefkruid.png"); }
+.bg-korenbloem { background-image: url("images/korenbloem.png"); }
+.bg-lavendel { background-image: url("images/lavendel.png"); }
+.bg-meidoorn { background-image: url("images/meidoorn.png"); }
+.bg-moringa-blad { background-image: url("images/moringa-blad.png"); }
+.bg-moerasspirae-bloesem { background-image: url("images/moerasspirae-bloesem.png"); }
+.bg-oranjebloesem { background-image: url("images/oranjebloesem.png"); }
+.bg-passiebloem { background-image: url("images/passiebloem.png"); }
+.bg-rozemarijn { background-image: url("images/rozemarijn.png"); }
+.bg-salie { background-image: url("images/salie.png"); }
+.bg-tulsi { background-image: url("images/tulsi.png"); }
+.bg-tijm { background-image: url("images/tijm.png"); }
+.bg-valeriaanwortel { background-image: url("images/valeriaanwortel.png"); }
+.bg-vlierbloesem { background-image: url("images/vlierbloesem.png"); }
+.bg-wilgenbast { background-image: url("images/wilgenbast.png"); }
+.bg-wilg enroosje { background-image: url("images/wilgenroosje.png"); } /* check: spatie = fout; zie opmerking hieronder */
+.bg-wilde-marjolein { background-image: url("images/wilde-marjolein.png"); }
+.bg-dovenetel { background-image: url("images/dovenetel.png"); }
+.bg-zwarte-bessen-blad { background-image: url("images/zwarte-bessen-blad.png"); }
+.bg-rode-peper { background-image: url("images/rode-peper.png"); }
+.bg-kardemom { background-image: url("images/kardemom.png"); }
+.bg-bergthee { background-image: url("images/bergthee.png"); }
+.bg-ijzerkruid { background-image: url("images/ijzerkruid.png"); }
+
+/* ===== Struiken ===== */
+.bg-braam { background-image: url("images/braamblad.png"); }
+.bg-zwarte-bes { background-image: url("images/zwarte-bes.png"); }
+.bg-framboos { background-image: url("images/framboos.png"); }
+
+/* Zwarte thee: achtergrond iets anders uitlijnen */
+.bg-zwarte-thee { background-position: center top; }
+
+/* =========================
+   Categorie kaarten (homepage)
+========================= */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.cat-card {
+  background: var(--card-cat);
+  border-radius: 18px;
+  padding: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.cat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.cat-title {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--link);
+  text-align: center;
+}
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap");
+
+/* =========================
+   RESET + VARIABLES
+========================= */
+* { box-sizing: border-box; }
+
+:root{
+  --max: 960px;
+  --pad: 16px;
+
+  --bg: #f6f6f4;
+  --text: #111;
+  --muted: rgba(0,0,0,.72);
+
+  --link: #5a2a82;
+  --link-2: #6b2fa3;
+
+  --border: 1px solid rgba(0,0,0,.06);
+  --border-strong: 1px solid rgba(0,0,0,.12);
+  --rule: 1px solid rgba(0,0,0,.08);
+
+  --card: rgba(255,255,255,.72);
+  --card-strong: rgba(255,255,255,.78);
+  --glass: rgba(255,255,255,.35);
+
+  --radius: 16px;
+  --radius-lg: 20px;
+
+  --shadow: 0 10px 30px rgba(0,0,0,.08);
+  --shadow-lg: 0 20px 40px rgba(0,0,0,.08);
+}
+
+/* =========================
+   BASIS (alle pagina's)
+========================= */
+body{
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  line-height: 1.5;
+  background: var(--bg);
+  color: #000;
+}
+
+.container{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+.header{
+  padding: 32px 0;
+  border-bottom: var(--rule);
+}
+
+h1{ margin: 0 0 6px; }
+h2{ margin: 28px 0 12px; }
+
+.muted{ opacity: .75; }
+.sub-info{
+  margin-top: 8px;
+  font-size: .95rem;
+  color: rgba(0,0,0,.85);
+}
+
+a{
+  color: var(--link);
+  text-decoration: underline;
+  font-weight: 600;
+}
+a:hover{ opacity: .85; }
+
+.footer{
+  padding: 28px 0 40px;
+  border-top: var(--rule);
+  margin-top: 28px;
+}
+
+/* generieke kaart (waar je 'm wel wil) */
+.card{
+  background: var(--card);
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 12px 0;
+}
+
+/* tags / zoekwoorden */
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:14px 0 10px;
+}
+.tags span{
+  font-size:.9rem;
+  padding:6px 10px;
+  border-radius:999px;
+  background: rgba(0,0,0,.05);
+}
+
+/* =========================
+   HOMEPAGE (body class="home")
+========================= */
+body.home{
+  min-height: 100vh;
+  background-image: url("images/achtergrond_thee_kunde.jpg");
+  background-repeat: repeat;     /* jij had ook varianten; dit is “veilig” */
+  background-size: auto;
+  background-position: center;
+}
+
+/* witte leesbare plaat */
+body.home main.container{
+  background: var(--card);
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-top: 20px;
+  box-shadow: var(--shadow);
+}
+
+/* secties */
+body.home section{
+  padding: 18px 0;
+  border-bottom: var(--rule);
+}
+body.home section:last-child{ border-bottom: none; }
+body.home .item{ margin: 10px 0; }
+body.home h3{
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+/* homepage: GEEN “kaart” look op .card */
+body.home .card{
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 0 12px;
+  box-shadow: none;
+}
+
+/* =========================
+   DETAILPAGINA'S (body class="bg-...")
+========================= */
+body[class^="bg-"]{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+body[class^="bg-"] main.container{
+  max-width: 720px;
+  margin: 40px auto 60px;
+  padding: clamp(18px, 4vw, 32px);
+  background: var(--card-strong);
+  border: var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+/* voorkom dubbele card binnen detail */
+body[class^="bg-"] .card{
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+/* info lijst */
+.info-list{
+  margin: 14px 0;
+  padding-left: 20px;
+}
+.info-list li{ margin: 6px 0; }
+
+/* eenvoudige navigatieknoppen (links) */
+.nav-buttons{
+  display:flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* link-stijl navknop */
 .btn-nav{
   text-decoration: none;
   font-weight: 600;
-  color: #5a2a82; /* match jouw linkkleur */
+  color: var(--link);
 }
 
-/* Optioneel: op heel smal scherm onder elkaar */
+/* op heel klein scherm onder elkaar */
 @media (max-width: 420px){
   .nav-buttons{
     flex-direction: column;
     align-items: flex-start;
   }
 }
-/* ==========================
-   HOMEPAGE: zoeken + chips
-   ========================== */
 
-.search-panel{
-  margin: 14px 0 22px;
+/* =========================
+   ZIJ-NAVIGATIE (vorige/volgende)
+========================= */
+.nav-sides{
+  position: fixed;
+  bottom: 120px;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 10;
 }
 
+.nav-side{
+  pointer-events: auto;
+  position: absolute;
+  padding: 10px 14px;
+  background: rgba(255,255,255,.85);
+  border-radius: 999px;
+  font-size: .9rem;
+  text-decoration: none;
+  color: #5a4a3f;
+  box-shadow: 0 4px 10px rgba(0,0,0,.10);
+  transition: transform .2s ease, background .2s ease;
+}
+
+.nav-side:hover{
+  background: #fff;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.nav-side.left{
+  left: 12px;
+  transform: translateY(-50%);
+}
+.nav-side.right{
+  right: 12px;
+  transform: translateY(-50%);
+}
+
+/* =========================
+   MIDDENKNOP + CATEGORIE LIJST
+========================= */
+.nav-center{
+  display:flex;
+  justify-content:center;
+  margin-top: 2.5rem;
+}
+
+.category-list{
+  display:flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.category-list h2{
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.category-list a{
+  color: var(--link-2);
+  text-decoration: underline;
+}
+.category-list a:hover{ text-decoration: none; }
+
+/* =========================
+   HOMEPAGE: zoeken + chips
+========================= */
+.search-panel{ margin: 14px 0 22px; }
+
 .search-row{
-  display: flex;
-  gap: 10px;
-  align-items: center;
+  display:flex;
+  gap:10px;
+  align-items:center;
 }
 
 .search-input{
   flex: 1;
   padding: 12px 14px;
   border-radius: 14px;
-  border: 1px solid rgba(0,0,0,.12);
+  border: var(--border-strong);
   background: rgba(255,255,255,.85);
   font-size: 16px;
   outline: none;
@@ -333,25 +586,24 @@ body[class^="bg-"] .card{
 .search-btn{
   padding: 12px 14px;
   border-radius: 14px;
-  border: 1px solid rgba(0,0,0,.12);
+  border: var(--border-strong);
   background: rgba(255,255,255,.85);
   cursor: pointer;
   font-weight: 600;
 }
-
 .search-btn:hover{ opacity: .9; }
 
 .chip-row{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
   margin-top: 12px;
 }
 
 .chip{
   border: 1px solid rgba(90,42,130,.18);
   background: rgba(90,42,130,.08);
-  color: #5a2a82; /* match je linkkleur */
+  color: var(--link);
   padding: 10px 12px;
   border-radius: 999px;
   font-weight: 600;
@@ -365,88 +617,182 @@ body[class^="bg-"] .card{
   border-color: rgba(90,42,130,.28);
 }
 
-.search-count{
-  margin-top: 10px;
-}
+.search-count{ margin-top: 10px; }
 
-/* Alfabet – cursieve, elegante stijl */
-.alphabet {
-  display: flex;
-  flex-wrap: wrap;
+/* =========================
+   ALFABET (A-Z knoppen)
+========================= */
+.alphabet{
+  display:flex;
+  flex-wrap:wrap;
   gap: 8px;
   margin: 20px 0 10px;
 }
 
-.az-btn {
+.az-btn{
   font-family: "Playfair Display", "Georgia", "Times New Roman", cursive;
   font-style: italic;
   font-size: 18px;
   padding: 6px 10px;
   border-radius: 10px;
   border: 1px solid rgba(0,0,0,.15);
-  background: rgba(255,255,255,.7);
+  background: rgba(255,255,255,.70);
   cursor: pointer;
-  transition: all .2s ease;
+  transition: transform .2s ease, background .2s ease;
 }
 
-.az-btn:hover {
-  background: rgba(255,255,255,.9);
+.az-btn:hover{
+  background: rgba(255,255,255,.90);
   transform: translateY(-1px);
 }
 
-.az-btn.is-active {
-  background: #6b2fa3;
+.az-btn.is-active{
+  background: var(--link-2);
   color: #fff;
-  border-color: #6b2fa3;
+  border-color: var(--link-2);
 }
 
-/* ===============================
-   Zij-navigatie (vorige / volgende)
-   =============================== */
-
-.nav-sides {
-  position: fixed;
-  bottom: 120px;   /* ⬅️ hoogte vanaf onderkant */
-  left: 0;
-  right: 0;
-  pointer-events: none;
-  z-index: 10;
+/* =========================
+   CATEGORIE OVERZICHT / KAARTJES
+========================= */
+.category-hero{
+  text-align: center;
+  padding: 56px 12px 10px;
+  margin-bottom: 14px;
 }
 
-.nav-side {
-  pointer-events: auto;
-  position: absolute;
-  padding: 10px 14px;
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 999px;
-  font-size: 0.9rem;
+.category-hero h1{
+  margin: 0 0 8px;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.category-hero .muted{ margin: 0; }
+
+/* nette titel schaal (indien je .site-title gebruikt) */
+.site-title{
+  font-size: clamp(40px, 5vw, 64px);
+  margin: 0 0 8px;
+}
+
+/* grid: één systeem (vervangt je 3 dubbele varianten) */
+.category-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 10px;
+}
+
+/* optioneel: “glassy” omhulsel rond grid (als je dat gebruikt) */
+.category-grid.glass{
+  padding: 18px;
+  border-radius: 18px;
+  background: var(--glass);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* kaart zelf */
+.cat-card{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height: 82px;
+  padding: 18px;
+  border-radius: 18px;
   text-decoration: none;
-  color: #5a4a3f;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: all 0.2s ease;
+
+  background: var(--card);
+  border: var(--border);
+  box-shadow: 0 10px 25px rgba(0,0,0,.10);
+
+  transition: transform .2s ease, box-shadow .2s ease;
 }
 
-.nav-side:hover {
-  background: #ffffff;
-  transform: translateY(-50%) scale(1.05);
+.cat-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(0,0,0,.12);
 }
 
-.nav-side.left {
-  left: 12px;
-  transform: translateY(-50%);
+.cat-title{
+  display:block;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  margin-bottom: 4px;
 }
 
-.nav-side.right {
-  right: 12px;
-  transform: translateY(-50%);
+.cat-sub{
+  display:block;
+  color: var(--muted);
+  font-size: .95rem;
+  line-height: 1.35;
 }
 
-/* ===============================
-   Middenknop (terug naar overzicht)
-   =============================== */
+/* =========================
+   PER PAGINA: achtergrond-afbeeldingen
+========================= */
+.bg-kamille { background-image: url("images/kamille_thee.jpg"); }
+.bg-groene-thee { background-image: url("images/groene_thee.png"); }
+.bg-zwarte-thee { background-image: url("images/zwarte_thee.png"); }
+.bg-oolong-thee { background-image: url("images/groene_thee.png"); }
+.bg-ashwagandha { background-image: url("images/ashwagandha.png"); }
+.bg-agrimonie { background-image: url("images/agrimonie.png"); }
+.bg-gember { background-image: url("images/gember.png"); }
+.bg-pepermunt { background-image: url("images/pepermunt.png"); }
+.bg-zoethout { background-image: url("images/zoethout.png"); }
+.bg-kaneel { background-image: url("images/kaneel.png"); }
+.bg-rozenblaadjes { background-image: url("images/rozenblaadjes.png"); }
+.bg-paardebloem { background-image: url("images/paardebloem.png"); }
 
-.nav-center {
-  display: flex;
-  justify-content: center;
-  margin-top: 2.5rem;
-}
+.bg-bijvoet { background-image: url("images/bijvoet.png"); }
+.bg-braamblad { background-image: url("images/braamblad.png"); }
+.bg-brandnetel { background-image: url("images/brandnetel.png"); }
+.bg-calendula { background-image: url("images/calendula.png"); }
+.bg-cichorei { background-image: url("images/cichorei.png"); }
+.bg-citroenmelisse { background-image: url("images/citroenmelisse.png"); }
+.bg-echinacea-wortel { background-image: url("images/echinacea-wortel.png"); }
+.bg-ginkgo-biloba { background-image: url("images/ginkgo-biloba.png"); }
+.bg-gildkruid { background-image: url("images/gildkruid.png"); }
+.bg-gulden-roede { background-image: url("images/gulden-roede.png"); }
+.bg-heermoest { background-image: url("images/heermoes.png"); }
+.bg-hibiscus { background-image: url("images/hibiscus.png"); }
+.bg-honey-bush { background-image: url("images/honey-bush.png"); }
+.bg-jeneverbes { background-image: url("images/jeneverbes.png"); }
+.bg-kaneelstokjes-8-cm { background-image: url("images/kaneelstokjes-8-cm.png"); }
+.bg-kleefkruid { background-image: url("images/kleefkruid.png"); }
+.bg-korenbloem { background-image: url("images/korenbloem.png"); }
+.bg-lavendel { background-image: url("images/lavendel.png"); }
+.bg-meidoorn { background-image: url("images/meidoorn.png"); }
+.bg-moringa-blad { background-image: url("images/moringa-blad.png"); }
+.bg-moerasspirae-bloesem { background-image: url("images/moerasspirae-bloesem.png"); }
+.bg-oranjebloesem { background-image: url("images/oranjebloesem.png"); }
+.bg-passiebloem { background-image: url("images/passiebloem.png"); }
+.bg-rozemarijn { background-image: url("images/rozemarijn.png"); }
+.bg-salie { background-image: url("images/salie.png"); }
+.bg-tulsi { background-image: url("images/tulsi.png"); }
+.bg-tijm { background-image: url("images/tijm.png"); }
+.bg-valeriaanwortel { background-image: url("images/valeriaanwortel.png"); }
+.bg-vlierbloesem { background-image: url("images/vlierbloesem.png"); }
+.bg-wilgenbast { background-image: url("images/wilgenbast.png"); }
+.bg-wilgenroosje { background-image: url("images/wilgenroosje.png"); }
+.bg-wilde-marjolein { background-image: url("images/wilde-marjolein.png"); }
+.bg-dovenetel { background-image: url("images/dovenetel.png"); }
+.bg-zwarte-bessen-blad { background-image: url("images/zwarte-bessen-blad.png"); }
+.bg-rode-peper { background-image: url("images/rode-peper.png"); }
+.bg-kardemom { background-image: url("images/kardemom.png"); }
+.bg-bergthee { background-image: url("images/bergthee.png"); }
+.bg-ijzerkruid { background-image: url("images/ijzerkruid.png"); }
+
+/* Struiken */
+.bg-braam { background-image: url("images/braamblad.png"); }
+.bg-zwarte-bes { background-image: url("images/zwarte-bes.png"); }
+.bg-framboos { background-image: url("images/framboos.png"); }
+
+/* Zwarte thee: uitlijning */
+.bg-zwarte-thee { background-position: center top; }

@@ -8,468 +8,97 @@
 </head>
 
 <body class="home">
-  <header class="header">
-    <div class="container">
-      <h1>Mijn Theekunde</h1>
-      <p class="muted">Soorten thee & kruiden — en waarvoor ze vaak gebruikt worden.</p>
-    </div>
-  </header>
-
   <main class="container">
 
-    <!-- ✅ ENIGE zoekblok (dus geen dubbele) -->
-    <section class="search-panel" aria-label="Zoeken en filters">
+    <!-- HERO -->
+    <section class="category-hero">
+      <h1 class="site-title">Mijn Theekunde</h1>
+      <p class="muted">Kies een categorie om te zoeken en bladeren.</p>
+    </section>
 
+    <!-- CATEGORIE TEGELS -->
+    <section class="category-grid" aria-label="Categorieën">
+      <a class="cat-card" href="categorie/thee.html"><span class="cat-title">Thee</span></a>
+      <a class="cat-card" href="categorie/specerijen.html"><span class="cat-title">Specerijen</span></a>
+      <a class="cat-card" href="categorie/kruiden.html"><span class="cat-title">Kruiden</span></a>
+      <a class="cat-card" href="categorie/bloemen.html"><span class="cat-title">Bloemen &amp; bloesems</span></a>
+      <a class="cat-card" href="categorie/vrucht.html"><span class="cat-title">Vrucht</span></a>
+      <a class="cat-card" href="categorie/struik.html"><span class="cat-title">Struik</span></a>
+      <a class="cat-card" href="categorie/blad.html"><span class="cat-title">Blad</span></a>
+      <a class="cat-card" href="categorie/wortel.html"><span class="cat-title">Wortel</span></a>
+    </section>
+
+    <!-- ZOEKEN + CHIPS -->
+    <section class="search-panel" aria-label="Zoeken">
       <div class="search-row">
         <input
-          id="search"
+          id="searchInput"
           class="search-input"
           type="search"
-          placeholder="Zoek op naam of eigenschap... (bv. kamille, slaap, maag, cafeïnevrij)"
+          placeholder="Zoek op naam of eigenschap (bv. slaap, maag, cafeïnevrij)"
           autocomplete="off"
         />
-        <button id="clearSearch" class="search-btn" type="button">Wis</button>
+        <button id="clearBtn" class="search-btn" type="button">Wis</button>
       </div>
 
-      <!-- chips met actieve filters (wordt gevuld door JS) -->
-      <div id="chipRow" class="chip-row" role="list" aria-label="Filters"></div>
+      <div class="chip-row" aria-label="Snelfilters">
+        <button class="chip" type="button" data-filter="ochtend">Ochtend</button>
+        <button class="chip" type="button" data-filter="middag">Middag</button>
+        <button class="chip" type="button" data-filter="avond">Avond</button>
+        <button class="chip" type="button" data-filter="cafeinevrij">Cafeïnevrij</button>
+        <button class="chip" type="button" data-filter="spijsvertering">Spijsvertering</button>
+        <button class="chip" type="button" data-filter="rust">Rust</button>
+        <button class="chip" type="button" data-filter="slaap">Slaap</button>
+      </div>
 
-      <!-- alfabet (A–Z) -->
-      <div id="alphabet" class="alphabet" aria-label="Alfabet"></div>
-
-      <!-- termen per letter (wordt gevuld door JS) -->
-      <div id="termRow" class="term-row" aria-label="Termen per letter"></div>
-
-      <p id="resultCount" class="muted search-count"></p>
+      <div id="searchCount" class="search-count muted"></div>
     </section>
 
-    <!-- =========================
-         JOUW OVERZICHT (items)
-         ========================= -->
-
-    <section>
-      <h2>Thee</h2>
-
-      <h3 class="item" data-tags="ochtend middag focus energie">
-        <a href="thee/groene-thee.html">Groene thee</a>
-      </h3>
-
-      <h3 class="item" data-tags="middag bewust focus">
-        <a href="thee/oolong-thee.html">Oolong</a>
-      </h3>
-
-      <h3 class="item" data-tags="ochtend energie focus cafeïne">
-        <a href="thee/zwarte-thee.html">Zwarte thee</a>
-      </h3>
+    <!-- ALFABET -->
+    <section aria-label="Alfabet">
+      <div class="alphabet">
+        <button class="az-btn" type="button" data-letter="a">A</button>
+        <button class="az-btn" type="button" data-letter="b">B</button>
+        <button class="az-btn" type="button" data-letter="c">C</button>
+        <button class="az-btn" type="button" data-letter="d">D</button>
+        <button class="az-btn" type="button" data-letter="e">E</button>
+        <button class="az-btn" type="button" data-letter="f">F</button>
+        <button class="az-btn" type="button" data-letter="g">G</button>
+        <button class="az-btn" type="button" data-letter="h">H</button>
+        <button class="az-btn" type="button" data-letter="i">I</button>
+        <button class="az-btn" type="button" data-letter="j">J</button>
+        <button class="az-btn" type="button" data-letter="k">K</button>
+        <button class="az-btn" type="button" data-letter="l">L</button>
+        <button class="az-btn" type="button" data-letter="m">M</button>
+        <button class="az-btn" type="button" data-letter="n">N</button>
+        <button class="az-btn" type="button" data-letter="o">O</button>
+        <button class="az-btn" type="button" data-letter="p">P</button>
+        <button class="az-btn" type="button" data-letter="q">Q</button>
+        <button class="az-btn" type="button" data-letter="r">R</button>
+        <button class="az-btn" type="button" data-letter="s">S</button>
+        <button class="az-btn" type="button" data-letter="t">T</button>
+        <button class="az-btn" type="button" data-letter="u">U</button>
+        <button class="az-btn" type="button" data-letter="v">V</button>
+        <button class="az-btn" type="button" data-letter="w">W</button>
+        <button class="az-btn" type="button" data-letter="x">X</button>
+        <button class="az-btn" type="button" data-letter="y">Y</button>
+        <button class="az-btn" type="button" data-letter="z">Z</button>
+      </div>
     </section>
 
-    <section>
-      <h2>Kruiden</h2>
+    <!-- RESULTATEN -->
+    <section class="card" aria-label="Zoekresultaten">
+  <h2>Resultaten</h2>
+  <p class="muted">Klik op een resultaat voor de detailpagina.</p>
 
-      <h3 class="item" data-tags="medicinaal lever spijsvertering opwekkend">
-        <a href="thee/agrimonie.html">Agrimonie</a>
-      </h3>
-
-      <h3 class="item" data-tags="avond rust slaap ontspanning stress">
-        <a href="thee/ashwagandha.html">Ashwagandha</a>
-      </h3>
-
-<h3 class="item"
-    data-tags="bergthee kruid keel hoest griep slijmoplossend ontstekingsremmend stress concentratie spijsvertering weerstand cafeinevrij">
-  <a href="thee/bergthee.html">Bergthee</a>
-</h3>
-
-<h3 class="item" data-tags="bijvoet kruid kruiden voorraad">
-  <a href="thee/bijvoet.html">Bijvoet</a>
-</h3>
-
-<h3 class="item" data-tags="braamblad kruid kruiden voorraad">
-  <a href="thee/braamblad.html">Braamblad</a>
-</h3>
-
-<h3 class="item" data-tags="brandnetel kruid kruiden voorraad">
-  <a href="thee/brandnetel.html">Brandnetel</a>
-</h3>
-
-<h3 class="item" data-tags="calendula kruid kruiden voorraad">
-  <a href="thee/calendula.html">Calendula</a>
-</h3>
-
-<h3 class="item" data-tags="cichorei kruid kruiden voorraad">
-  <a href="thee/cichorei.html">Cichorei</a>
-</h3>
-
-<h3 class="item" data-tags="citroenmelisse kruid kruiden voorraad">
-  <a href="thee/citroenmelisse.html">Citroenmelisse</a>
-</h3>
-
-<h3 class="item" data-tags="dovenetel kruid kruiden voorraad keel maag ontsteking rust">
-  <a href="thee/dovenetel.html">Dovenetel</a>
-</h3>
-
-<h3 class="item" data-tags="gildkruid kruid kruiden voorraad">
-  <a href="thee/gildkruid.html">Gildkruid</a>
-</h3>
-
-<h3 class="item" data-tags="ginkgo biloba kruid kruiden voorraad">
-  <a href="thee/ginko-biloba.html">Ginko-biloba</a>
-</h3>
-
-<h3 class="item" data-tags="guldenroede kruid kruiden voorraad">
-  <a href="thee/gulden-roede.html">Gulden-roede</a>
-</h3>
-
-<h3 class="item" data-tags="heermoes kruid kruiden voorraad">
-  <a href="thee/heermoes.html">Heermoes</a>
-</h3>
-
-<h3 class="item" data-tags="hibiscus kruid kruiden voorraad">
-  <a href="thee/hibiscus.html">Hibiscus</a>
-</h3>
-
-<h3 class="item" data-tags="honeybush kruid kruiden voorraad">
-  <a href="thee/honey-bush.html">Honey-bush</a>
-</h3>
-
-<h3 class="item"
-    data-tags="ijzerkruid kruid stress angst concentratie geheugen spijsvertering kramp ontstekingsremmend rust cafeinevrij">
-  <a href="thee/ijzerkruid.html">IJzerkruid</a>
-</h3>
-
-<h3 class="item" data-tags="avond ontspanning rust slaap cafeïnevrij">
-        <a href="thee/kamille.html">Kamille</a>
-      </h3>
-
-<h3 class="item" data-tags="kleefkruid kruid kruiden voorraad">
-  <a href="thee/kleefkruid.html">Kleefkruid</a>
-</h3>
-
-<h3 class="item" data-tags="lavendel kruid kruiden voorraad ontspanning rust slaap">
-  <a href="thee/lavendel.html">Lavendel</a>
-</h3>
-
-<h3 class="item" data-tags="moringa blad kruid kruiden voorraad energie">
-  <a href="thee/moringa-blad.html">Moringa blad</a>
-</h3>
-
- <h3 class="item" data-tags="spijsvertering maag fris cafeïnevrij">
-        <a href="thee/pepermunt.html">Pepermunt</a>
-      </h3>
-
-<h3 class="item" data-tags="rozemarijn kruid kruiden voorraad focus">
-  <a href="thee/rozemarijn.html">Rozemarijn</a>
-</h3>
-
-<h3 class="item" data-tags="salie kruid kruiden voorraad keel">
-  <a href="thee/salie.html">Salie</a>
-</h3>
-
-<h3 class="item" data-tags="tulsi kruid kruiden voorraad stress ontspanning">
-  <a href="thee/tulsi.html">Tulsi</a>
-</h3>
-
-<h3 class="item" data-tags="tijm kruid kruiden voorraad keel luchtwegen">
-  <a href="thee/tijm.html">Tijm</a>
-</h3>
-
-<h3 class="item" data-tags="wilde marjolein kruid kruiden voorraad ontspanning">
-  <a href="thee/wilde-marjolein.html">Wilde marjolein</a>
-</h3>
-
+  <div id="results" class="category-grid" aria-label="Resultatenlijst"></div>
+  <p id="noResults" class="muted" style="display:none; margin-top:10px;">
+    Geen resultaten gevonden. Klik op <b>Wis</b> of kies een andere chip/letter.
+  </p>
 </section>
-
-<section>
-    <h2>Specerijen</h2>
-
-<h3 class="item" data-tags="specerij kaneel spijsvertering verwarmend bloedcirculatie cafeïnevrij">
-  <a href="thee/kaneel.html">Kaneel</a>
-</h3>
-
-<h3 class="item" data-tags="kardemom specerij spijsvertering">
-  <a href="thee/kardemom.html">Kardemom</a>
-</h3>
-
-<h3 class="item" data-tags="rode peper specerij verwarmend">
-  <a href="thee/rode-peper.html">Rode peper</a>
-</h3>
-</section>
-
-<section>
-      <h2>Bloemen &amp; bloesems</h2>
-
- <h3 class="item" data-tags="korenbloem bloem bloesem bloemen voorraad">
-  <a href="thee/korenbloem.html">Korenbloem</a>
-</h3>
-
-<h3 class="item" data-tags="moerasspirea bloesem bloem bloemen voorraad">
-  <a href="thee/moerasspirea-bloesem.html">Moerasspirea bloesem</a>
-</h3>
-
-<h3 class="item" data-tags="oranjebloesem bloesem bloem bloemen voorraad ontspanning">
-  <a href="thee/oranjebloesem.html">Oranjebloesem</a>
-</h3>
-
-<h3 class="item" data-tags="passiebloem bloem bloemen voorraad ontspanning slaap rust">
-  <a href="thee/passiebloem.html">Passiebloem</a>
-</h3>
-     
-  <h3 class="item" data-tags="bloem ontspanning kalmerend geurend cafeïnevrij roos rozenblaadjes">
-    <a href="thee/rozenblaadjes.html">Rozenblaadjes</a>
-  </h3>
-
- <h3 class="item" data-tags="vlierbloesem bloem bloesem bloemen voorraad">
-  <a href="thee/vlierbloesem.html">Vlierbloesem</a>
-</h3>
-
-<h3 class="item" data-tags="wilgenroosje bloem bloesem bloemen voorraad">
-  <a href="thee/wilgenroosje.html">Wilgenroosje</a>
-</h3>
- 
-</section>
-
-<section>
-  <h2>Struik</h2>
-
-  <h3 class="item" data-tags="struik braam blad samentrekkend spijsvertering cafeinevrij">
-   <a href="thee/braam.html">Braam</a>
-  </h3>
-
-  <h3 class="item" data-tags="struik framboos blad vrouw spijsvertering cafeinevrij">
-    <a href="thee/framboos.html">Framboos</a>
-  </h3>
-
-  <h3 class="item" data-tags="struik meidoorn hart rust bloeddruk cafeinevrij">
-    <a href="thee/meidoorn.html">Meidoorn</a>
-  </h3>
-
-  <h3 class="item" data-tags="struik zwarte bessen blad weerstand ontsteking cafeinevrij">
-    <a href="thee/zwarte-bes.html">Zwarte bessen</a>
-  </h3>
-</section>
-
- <section>
-  <h2>Wortel</h2>
-
-      <h3 class="item" data-tags="echinacea wortel reinigend weerstand kruid voorraad">
-  <a href="thee/echinacea-wortel.html">Echinacea wortel</a>
-</h3>
-      
-      <h3 class="item" data-tags="wortel ochtend middag spijsvertering verwarmend misselijkheid cafeïnevrij">
-        <a href="thee/gember.html">Gember</a>
-      </h3>
-
-      <h3 class="item" data-tags="wortel reinigend spijsvertering lever gal cafeïnevrij paardenbloem">
-        <a href="thee/paardenbloem.html">Paardenbloem (wortel)</a>
-      </h3>
-
-     <h3 class="item" data-tags="valeriaan wortel slaap rust ontspanning">
-  <a href="thee/valeriaan-wortel.html">Valeriaan wortel</a>
-</h3>
-
-<h3 class="item" data-tags="wilgenbast bast pijn ontsteking">
-  <a href="thee/wilgenbast.html">Wilgenbast</a>
-</h3>
-
-<h3 class="item" data-tags="zwarte bessen blad blad kruid">
-  <a href="thee/zwarte-bessen-blad.html">Zwarte bessen blad</a>
-</h3>
- 
-<h3 class="item" data-tags="wortel ochtend middag avond keelpijn prikkelhoest maag darm ontstekingswerend cafeïnevrij">
-   <a href="thee/zoethout.html">Zoethout</a>
- </h3>
- </section>
-
-    <section>
-  <h2>Vrucht</h2>
-
-  <h3 class="item" data-tags="jeneverbes kruid kruiden voorraad">
-  <a href="thee/jeneverbes.html">Jeneverbes</a>
-</h3>
-    </section>
 
   </main>
 
-  <!-- ✅ ENIGE scriptblok -->
-  <script>
-    // -------- helpers --------
-    function normalizeText(str) {
-      return (str || "")
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")       // accenten weg
-        .replace(/[^a-z0-9\s-]/g, " ")        // rare tekens weg
-        .replace(/\s+/g, " ")
-        .trim();
-    }
-
-    function unique(arr) {
-      return Array.from(new Set(arr));
-    }
-
-    // -------- elements --------
-    const searchInput  = document.getElementById("search");
-    const clearBtn     = document.getElementById("clearSearch");
-    const resultCount  = document.getElementById("resultCount");
-    const chipRow      = document.getElementById("chipRow");
-    const alphabetEl   = document.getElementById("alphabet");
-    const termRow      = document.getElementById("termRow");
-
-    const items = Array.from(document.querySelectorAll(".item"));
-
-    // Index: titel + tags
-    const itemIndex = items.map(el => {
-      const title = el.textContent || "";
-      const tags  = el.getAttribute("data-tags") || "";
-      return {
-        el,
-        haystack: normalizeText(title + " " + tags),
-        title: normalizeText(title),
-        tags: normalizeText(tags),
-      };
-    });
-
-    // Verzamel ALLE termen uit data-tags + titles (woorden)
-    const allTerms = unique(
-      itemIndex.flatMap(x => {
-        const words = (x.title + " " + x.tags).split(" ");
-        return words.map(w => normalizeText(w)).filter(Boolean);
-      })
-    ).filter(t => t.length >= 2); // filter super-korte rommel (zoals "en", "of")
-
-    // Maak alfabet A–Z
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-    let activeLetter = null;
-
-    function renderAlphabet() {
-      alphabetEl.innerHTML = "";
-      letters.forEach(letter => {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "az-btn";
-        btn.textContent = letter;
-
-        btn.addEventListener("click", () => {
-          activeLetter = (activeLetter === letter) ? null : letter;
-          renderAlphabet();    // opnieuw tekenen voor active state
-          renderTermsForLetter(activeLetter);
-        });
-
-        if (activeLetter === letter) btn.classList.add("is-active");
-        alphabetEl.appendChild(btn);
-      });
-    }
-
-    // Termen tonen voor gekozen letter
-    function renderTermsForLetter(letter) {
-      termRow.innerHTML = "";
-      if (!letter) return;
-
-      const starts = allTerms
-        .filter(t => t[0] && t[0].toUpperCase() === letter)
-        .sort((a,b) => a.localeCompare(b, "nl"));
-
-      if (starts.length === 0) {
-        const p = document.createElement("p");
-        p.className = "muted";
-        p.textContent = "Geen termen onder deze letter.";
-        termRow.appendChild(p);
-        return;
-      }
-
-      starts.forEach(term => {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "chip";
-        btn.textContent = term;
-
-        btn.addEventListener("click", () => {
-          toggleFilter(term);
-        });
-
-        termRow.appendChild(btn);
-      });
-    }
-
-    // Filters (chips)
-    const activeFilters = new Set();
-
-    function toggleFilter(term) {
-      if (activeFilters.has(term)) activeFilters.delete(term);
-      else activeFilters.add(term);
-
-      renderActiveChips();
-      applyFilters();
-    }
-
-    function renderActiveChips() {
-      chipRow.innerHTML = "";
-
-      if (activeFilters.size === 0) return;
-
-      Array.from(activeFilters)
-        .sort((a,b) => a.localeCompare(b, "nl"))
-        .forEach(term => {
-          const btn = document.createElement("button");
-          btn.type = "button";
-          btn.className = "chip is-active";
-          btn.textContent = term;
-
-          btn.addEventListener("click", () => {
-            toggleFilter(term);
-          });
-
-          chipRow.appendChild(btn);
-        });
-    }
-
-    // Filter logic: zoektekst (woorden) + actieve filters
-    function applyFilters() {
-      const q = normalizeText(searchInput.value);
-      const words = q ? q.split(" ") : [];
-
-      const filters = Array.from(activeFilters);
-
-      let visible = 0;
-
-      itemIndex.forEach(({ el, haystack }) => {
-        const matchText =
-          words.length === 0 || words.every(w => haystack.includes(w));
-
-        const matchFilters =
-          filters.length === 0 || filters.every(f => haystack.includes(f));
-
-        const show = matchText && matchFilters;
-        el.style.display = show ? "" : "none";
-        if (show) visible++;
-      });
-
-      if (!q && filters.length === 0) {
-        resultCount.textContent = "";
-      } else {
-        resultCount.textContent =
-          visible === 0
-            ? "Geen resultaten gevonden."
-            : `${visible} resultaat${visible === 1 ? "" : "en"} zichtbaar.`;
-      }
-    }
-
-    // Events
-    searchInput.addEventListener("input", applyFilters);
-
-    clearBtn.addEventListener("click", () => {
-      searchInput.value = "";
-      activeFilters.clear();
-      activeLetter = null;
-      renderAlphabet();
-      termRow.innerHTML = "";
-      chipRow.innerHTML = "";
-      applyFilters();
-      searchInput.focus();
-    });
-
-    // Init
-    renderAlphabet();
-    applyFilters();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
