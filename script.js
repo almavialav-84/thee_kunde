@@ -1,122 +1,71 @@
-document.addEventListener("DOMContentLoaded", async () => {
-  // ====== 1) LIJST MET DETAILPAGINA'S ======
-  // Voeg hier al jouw productpagina's toe (pad vanaf index.html).
-  // Voorbeeld: "thee/agrimonie.html"
-  const PAGES = [
-    "thee/agrimonie.html",
-    "thee/ashwagandha.html",
-    "thee/brandnetel.html",
-    "thee/kamille.html",
-    "thee/pepermunt.html",
-    // ... voeg de rest toe
-  ];
+console.log("✅ script.js geladen");
 
-  // ====== 2) ELEMENTEN IN INDEX.HTML ======
-  const input = document.getElementById("searchInput");
-  const clearBtn = document.getElementById("clearBtn");
-  const countEl = document.getElementById("searchCount");
-  const resultsEl = document.getElementById("results");
-  const noResultsEl = document.getElementById("noResults");
+// ============================
+// 1) DATA: plak hier jouw lijst
+// ============================
+// Voorbeeld-structuur (zoals jij al gebruikt):
+// { name: "Agrimonie", href: "thee/agrimonie.html", letter: "a", tags: ["slaap", "rust"] }
+
+const DATA = [
+  // <-- PLAK HIER JOUW VOLLEDIGE LIJST (die je al hebt)
+];
+
+// ============================
+// 2) Helpers
+// ============================
+function normalize(s) {
+  return (s || "")
+    .toString()
+    .toLowerCase()
+    .trim()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, ""); // haalt accenten weg
+}
+
+function uniqueByHref(items) {
+  const seen = new Set();
+  return items.filter((x) => {
+    if (!x || !x.href) return false;
+    if (seen.has(x.href)) return false;
+    seen.add(x.href);
+    return true;
+  });
+}
+
+// ============================
+// 3) DOM ophalen
+// ============================
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.querySelector(".search-input"); // jouw input heeft class="search-input"
+  const clearBtn = document.querySelector("#clearBtn");
+  const resultsEl = document.querySelector("#results");
+  const noResultsEl = document.querySelector("#noResults");
+  const countEl = document.querySelector("#count"); // als je die hebt, anders ok
 
   const chips = Array.from(document.querySelectorAll(".chip"));
   const azBtns = Array.from(document.querySelectorAll(".az-btn"));
 
-  if (!resultsEl) return;
-
-  // ====== 3) STATE ======
-  const state = { q: "", tag: "", letter: "" };
-
-  // ====== 4) NORMALIZE (spaties/koppelteken/é/ë etc.) ======
-  function normalize(s) {
-    return (s || "")
-      .toString()
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[\s\-_.]+/g, " ")
-      .trim();
+  if (!resultsEl) {
+    console.warn("⚠️ Ik vind #results niet. Controleer of je <div id='results'> hebt.");
+    return;
   }
 
-  function normalizeForSearch(s) {
-    // extra streng voor zoeken (spaties weg)
-    return normalize(s).replace(/\s+/g, "");
-  }
+  // ============================
+  // 4) State
+  // ============================
+  const state = {
+    q: "",
+    tag: "",     // chip filter (bv "slaap")
+    letter: "",  // alfabet filter (bv "a")
+  };
 
-  function hasAnyFilter() {
-    return state.q.length > 0 || state.tag.length > 0 || state.letter.length > 0;
-  }
-
-  // ====== 5) DATA OPBOUWEN DOOR HTML TE LEZEN ======
-  async function loadOne(url) {
-    const res = await fetch(url, { cache: "no-store" });
-    if (!res.ok) throw new Error(`Kan pagina niet laden: ${url}`);
-    const html = await res.text();
-
-    const doc = new DOMParser().parseFromString(html, "text/html");
-
-    // Naam: bij jou staat h1 in header (zoals Agrimonie) :contentReference[oaicite:1]{index=1}
-    const h1 = doc.querySelector("h1");
-    const name = h1 ? h1.textContent.trim() : url.split("/").pop();
-
-    // Keywords/klachten: alle <li> uit de EERSTE gewone <ul> (zonder class)
-    // (bij Agrimonie zijn dat de 7 bullets met werking/klachten) :contentReference[oaicite:2]{index=2}
-    const firstPlainUl = doc.querySelector("article ul:not(.info-list)");
-    const bulletLis = firstPlainUl ? Array.from(firstPlainUl.querySelectorAll("li")) : [];
-    const bulletTexts = bulletLis.map(li => li.textContent.trim()).filter(Boolean);
-
-    // Info-list: moment/werking/cafeïne
-    const infoLis = Array.from(doc.querySelectorAll("ul.info-list li"));
-    // Maak een tekstblok van die info (handig om op te zoeken)
-    const infoText = infoLis.map(li => li.textContent.trim()).join(" | ");
-
-    // Extra: maak tags voor chips op basis van "Moment" & "Cafeïne"
-    // (Zo werken chips als "Ochtend", "Middag", "Avond", "Cafeïnevrij")
-    const tags = [];
-    const infoLower = normalize(infoText);
-
-    if (infoLower.includes("ochtend")) tags.push("ochtend");
-    if (infoLower.includes("middag")) tags.push("middag");
-    if (infoLower.includes("avond")) tags.push("avond");
-    if (infoLower.includes("cafe")) {
-      // bij jou staat: "Cafeïne: nee" :contentReference[oaicite:3]{index=3}
-      if (infoLower.includes("nee")) tags.push("cafeinevrij");
-    }
-
-    // Zoekblob: naam + bullets + info
-    const searchBlob = [
-      name,
-      ...bulletTexts,
-      infoText,
-      ...tags
-    ].map(normalizeForSearch).join(" ");
-
-    return {
-      name,
-      href: url,
-      tags,           // voor chips
-      bullets: bulletTexts,
-      infoText,
-      searchBlob
-    };
-  }
-
-  async function loadAll() {
-    const out = [];
-    for (const url of PAGES) {
-      try {
-        out.push(await loadOne(url));
-      } catch (e) {
-        console.warn(e);
-      }
-    }
-    return out;
-  }
-
-  // ====== 6) RENDER ======
+  // ============================
+  // 5) Render + Filter
+  // ============================
   function render(list) {
     resultsEl.innerHTML = "";
 
-    list.forEach(item => {
+    list.forEach((item) => {
       const a = document.createElement("a");
       a.className = "cat-card";
       a.href = item.href;
@@ -130,76 +79,78 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  function setCount(text) {
-    if (!countEl) return;
-    countEl.textContent = text;
-  }
+  function apply() {
+    const hasAnyFilter =
+      state.q.length > 0 || state.tag.length > 0 || state.letter.length > 0;
 
-  function showNoResults(show) {
-    if (!noResultsEl) return;
-    noResultsEl.style.display = show ? "block" : "none";
-  }
-
-  // ====== 7) FILTER LOGICA ======
-  function matches(item) {
-    // letter
-    if (state.letter) {
-      const first = normalize(item.name).charAt(0);
-      if (first !== normalize(state.letter).charAt(0)) return false;
-    }
-
-    // chip/tag
-    if (state.tag) {
-      if (!item.tags.includes(state.tag)) return false;
-    }
-
-    // zoekterm (op volledige blob: naam + klachten + werking + moment)
-    if (state.q) {
-      if (!item.searchBlob.includes(state.q)) return false;
-    }
-
-    return true;
-  }
-
-  function apply(DATA) {
-    if (!hasAnyFilter()) {
-      render([]);
-      setCount("");
-      showNoResults(false);
+    // 👉 Belangrijk: als er nog niks gekozen/ingetikt is → laat leeg
+    if (!hasAnyFilter) {
+      resultsEl.innerHTML = "";
+      if (noResultsEl) noResultsEl.style.display = "none";
+      if (countEl) countEl.textContent = "";
       return;
     }
 
-    const filtered = DATA.filter(matches);
+    const q = normalize(state.q);
+    const tag = normalize(state.tag);
+    const letter = normalize(state.letter);
+
+    let filtered = DATA;
+
+    // Letter-filter
+    if (letter) {
+      filtered = filtered.filter((x) => normalize(x.letter) === letter);
+    }
+
+    // Chip/tag-filter (kijkt in tags-array)
+    if (tag) {
+      filtered = filtered.filter((x) =>
+        (x.tags || []).some((t) => normalize(t) === tag)
+      );
+    }
+
+    // Tekst zoeken: in naam én in tags
+    if (q) {
+      filtered = filtered.filter((x) => {
+        const inName = normalize(x.name).includes(q);
+        const inTags = (x.tags || []).some((t) => normalize(t).includes(q));
+        return inName || inTags;
+      });
+    }
+
+    filtered = uniqueByHref(filtered);
+
     render(filtered);
 
-    const parts = [];
-    if (state.q) parts.push(`zoek: "${state.q}"`);
-    if (state.tag) parts.push(`filter: ${state.tag}`);
-    if (state.letter) parts.push(`letter: ${state.letter.toUpperCase()}`);
-    const extra = parts.length ? ` (${parts.join(", ")})` : "";
-    setCount(`${filtered.length} resultaat/resultaten zichtbaar${extra}.`);
+    if (noResultsEl) {
+      noResultsEl.style.display = filtered.length === 0 ? "block" : "none";
+    }
 
-    showNoResults(filtered.length === 0);
+    if (countEl) {
+      const parts = [];
+      if (state.q) parts.push(`zoek: "${state.q}"`);
+      if (state.tag) parts.push(`chip: ${state.tag}`);
+      if (state.letter) parts.push(`letter: ${state.letter.toUpperCase()}`);
+      const extra = parts.length ? ` (${parts.join(", ")})` : "";
+      countEl.textContent = `${filtered.length} resultaat/resultaten zichtbaar${extra}.`;
+    }
   }
 
-  // ====== 8) UI EVENTS ======
   function clearActive() {
-    chips.forEach(b => b.classList.remove("is-active"));
-    azBtns.forEach(b => b.classList.remove("is-active"));
+    chips.forEach((b) => b.classList.remove("is-active"));
+    azBtns.forEach((b) => b.classList.remove("is-active"));
   }
 
-  // ====== 9) LOAD DATA + START ======
-  setCount("Bezig met laden…");
-  const DATA = await loadAll();
-  setCount("");         // leeg starten
-  render([]);           // leeg starten
-  showNoResults(false);
-
+  // ============================
+  // 6) Events
+  // ============================
   if (input) {
     input.addEventListener("input", () => {
-      state.q = normalizeForSearch(input.value);
-      apply(DATA);
+      state.q = input.value.trim();
+      apply();
     });
+  } else {
+    console.warn("⚠️ Ik vind .search-input niet. Controleer class='search-input' op je input.");
   }
 
   if (clearBtn) {
@@ -209,35 +160,38 @@ document.addEventListener("DOMContentLoaded", async () => {
       state.letter = "";
       if (input) input.value = "";
       clearActive();
-      apply(DATA);
+      apply();
     });
   }
 
-  // chips toggle
-  chips.forEach(btn => {
+  // Chips toggle (aan/uit)
+  chips.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const tag = normalizeForSearch(btn.dataset.filter || btn.textContent);
+      const clicked = normalize(btn.dataset.filter || btn.textContent);
       const turnOn = !btn.classList.contains("is-active");
 
-      chips.forEach(b => b.classList.remove("is-active"));
-      state.tag = turnOn ? tag : "";
+      chips.forEach((b) => b.classList.remove("is-active"));
+      state.tag = turnOn ? clicked : "";
       if (turnOn) btn.classList.add("is-active");
 
-      apply(DATA);
+      apply();
     });
   });
 
-  // alfabet toggle
-  azBtns.forEach(btn => {
+  // Alfabet toggle (aan/uit)
+  azBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const letter = normalizeForSearch(btn.dataset.letter || btn.textContent);
+      const clicked = normalize(btn.dataset.letter || btn.textContent);
       const turnOn = !btn.classList.contains("is-active");
 
-      azBtns.forEach(b => b.classList.remove("is-active"));
-      state.letter = turnOn ? letter : "";
+      azBtns.forEach((b) => b.classList.remove("is-active"));
+      state.letter = turnOn ? clicked : "";
       if (turnOn) btn.classList.add("is-active");
 
-      apply(DATA);
+      apply();
     });
   });
+
+  // Start leeg
+  apply();
 });

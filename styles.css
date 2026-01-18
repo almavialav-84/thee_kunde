@@ -208,7 +208,7 @@ body[class^="bg-"] .card {
 .bg-zoethout { background-image: url("images/zoethout.png"); }
 .bg-kaneel { background-image: url("images/kaneel.png"); }
 .bg-rozenblaadjes { background-image: url("images/rozenblaadjes.png"); }
-.bg-paardebloem { background-image: url("images/paardebloem.png"); }
+.bg-paardenbloem { background-image: url("images/paardenbloem.png"); }
 
 /* Nieuwe kruiden voorraad */
 .bg-bijvoet { background-image: url("images/bijvoet.png"); }
@@ -221,7 +221,7 @@ body[class^="bg-"] .card {
 .bg-ginkgo-biloba { background-image: url("images/ginkgo-biloba.png"); }
 .bg-gildkruid { background-image: url("images/gildkruid.png"); }
 .bg-gulden-roede { background-image: url("images/gulden-roede.png"); }
-.bg-heermoest { background-image: url("images/heermoes.png"); }
+.bg-heermoes { background-image: url("images/heermoes.png"); }
 .bg-hibiscus { background-image: url("images/hibiscus.png"); }
 .bg-honey-bush { background-image: url("images/honey-bush.png"); }
 .bg-jeneverb es { background-image: url("images/jeneverbes.png"); } /* check: classnaam met spatie is fout; zie opmerking hieronder */
@@ -231,7 +231,7 @@ body[class^="bg-"] .card {
 .bg-lavendel { background-image: url("images/lavendel.png"); }
 .bg-meidoorn { background-image: url("images/meidoorn.png"); }
 .bg-moringa-blad { background-image: url("images/moringa-blad.png"); }
-.bg-moerasspirae-bloesem { background-image: url("images/moerasspirae-bloesem.png"); }
+.bg-moerasspirea-bloesem{ background-image: url("images/moerasspirea-bloesem.png"); }
 .bg-oranjebloesem { background-image: url("images/oranjebloesem.png"); }
 .bg-passiebloem { background-image: url("images/passiebloem.png"); }
 .bg-rozemarijn { background-image: url("images/rozemarijn.png"); }
